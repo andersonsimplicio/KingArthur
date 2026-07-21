@@ -1,0 +1,12 @@
+# Trata todos os arquivos de código/texto com LF no Git
+* text=auto eol=lf
+
+# Mantém arquivos binários intactos
+*.png binary
+*.jpg binary
+*.psd binary
+*.fbx binary
+*.wav binary
+*.mp3 binary
+*.prefab binary
+*.asset binary
