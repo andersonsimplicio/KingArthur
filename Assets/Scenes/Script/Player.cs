@@ -7,6 +7,8 @@ public class Player : MonoBehaviour
     public float speed = 5f;
     private Vector2 direction;
 
+    private Rigidbody2D rig;
+
     public Vector2 _direction
     {
         get { return this.direction;} 
@@ -17,7 +19,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         Debug.Log("Inicio da Cena");
-        
+        rig = GetComponent<Rigidbody2D>();
        
     }
 
@@ -40,5 +42,10 @@ public class Player : MonoBehaviour
         if (Keyboard.current.dKey.isPressed || Keyboard.current.rightArrowKey.isPressed) 
             this.direction.x = 1f;
         return (Vector3)this.direction.normalized;
+    }
+
+    private void FixedUpdate()
+    {
+            rig.MovePosition(rig.position+this.direction * (this.speed *Time.deltaTime));
     }
 }

@@ -4,6 +4,7 @@ public class PlayerAnime : MonoBehaviour
 {
     private Player player;
     private Animator animator;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -20,7 +21,7 @@ public class PlayerAnime : MonoBehaviour
         }else{
             this.animator.SetInteger("transicao", 0);
         }
-
+        
         if (player._direction.x > 0){             
           transform.eulerAngles = new Vector2(0,0);
         }else if (player._direction.x < 0){
