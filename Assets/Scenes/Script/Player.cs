@@ -6,8 +6,8 @@ public class Player : MonoBehaviour
     public int life = 40;
     public float speed = 5f;
     private Vector2 direction;
-
-    private Rigidbody2D rig;
+    private Rigidbody2D rig; 
+    
 
     public Vector2 _direction
     {
@@ -21,13 +21,19 @@ public class Player : MonoBehaviour
         Debug.Log("Inicio da Cena");
         rig = GetComponent<Rigidbody2D>();
        
+       
     }
 
     // Update is called once per frame
     void Update()
     {
-            Vector2 direction = Vector2.zero;
-            transform.position += (Vector3)Mover(direction) * (speed * Time.deltaTime);     
+           
+    }
+    
+    public void OnMove(InputValue value)
+    {
+        // Lê a direção (X, Y) já normalizada
+        direction = value.Get<Vector2>();
     }
     
     Vector3 Mover(Vector2 direction)
@@ -46,6 +52,6 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-            rig.MovePosition(rig.position+this.direction * (this.speed *Time.deltaTime));
+        rig.linearVelocity =Mover(direction) * (speed);           
     }
 }
