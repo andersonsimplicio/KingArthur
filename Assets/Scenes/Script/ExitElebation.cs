@@ -1,15 +1,13 @@
 using UnityEngine;
 
-public class Elevation_Entry : MonoBehaviour
+public class ExitElebation : MonoBehaviour
 {
-
     public Collider2D[] moutainColliders;
     public Collider2D[] limiteLevel;
-    public bool level;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        level =false;
+        
     }
 
     // Update is called once per frame
@@ -23,16 +21,14 @@ public class Elevation_Entry : MonoBehaviour
 
         if(colision.gameObject.CompareTag("Player")){
             foreach(var elevacao in moutainColliders){
-                    
-                    elevacao.enabled = level;
+                    elevacao.enabled = true;
             }
                     
           foreach(var limite in limiteLevel){
-                   limite.enabled = !level;
+                   limite.enabled = false;
             } 
-            colision.gameObject.GetComponent<SpriteRenderer>().sortingOrder = 15;
+            colision.gameObject.GetComponent<SpriteRenderer>().sortingOrder = 10;
 
-            
         }
 
     }
